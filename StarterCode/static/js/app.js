@@ -47,37 +47,23 @@ d3.json("samples.json").then(data => {
         }
     };
 
-//2.Create a horizontal bar chart  
+//2.Create a horizontal bar chart with the above parameters  
 Plotly.newPlot("bar",input, graph);
 //2.a dropdown menu to display the top 10 OTUs found in that individual.
     function hot() {
         var choice = d3.select("#selDataset");
-        //look through the data in the original fine
+        //look through the data in the data file
         d3.json("samples.json").then(data => {
         //console.log(data)
         //get the id names to populate for the dropdown menu
         data.names.forEach(function(name) {
             dropdown.append("option").text(name).property("value");
         });
-    
-
-//2b.Create dropdown Menu
-        //Create the function
-        function dropdown() {
-var dropdown = d3.selectAll("#selDataset").on("change",updatePlotly);
-//2b.i Create a function when the dropdown is selected
-function updatePlotly() {
-    //2b.ii Using D3 to select the dropdown menu
-    var dropdownMenu=d3.select("#selDataset");
-    //red the data into the set
+    });
 
 
-    
-    var dataset
-}
-
-//3.Create a bubble chart that displays each sample.
-Plotly.newPlot("bubble", databubble,layout);
+//create variables for the bubble chart
+var bubble_1 = [graph_1];
     var graph_1 = {
         x:data.samples[0].otu_ids,
         y:data.samples[0].values,
@@ -86,8 +72,17 @@ Plotly.newPlot("bubble", databubble,layout);
             size:data.samples[0].values,
             color:data.samples[0].values,
         },
+        text: data.samples[0].otu_labels
+    };
+};
+    var bubble_lay = {
+        xaxis:{title: "ID's"},
+            height: 400,
+            width: 800
+    };
 
-    }
+//3.Create a bubble chart that displays each sample.
+Plotly.newPlot("bubble", bubble_1 ,bubble_lay);
 
 //4.Display the sample metadata, i.e., an individual's demographic information.
 var indMet = data.metadata.filter(subject => subject.id ==id)[0];
