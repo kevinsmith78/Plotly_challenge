@@ -19,14 +19,22 @@ d3.json("samples.json").then(function (data) {
     //console.log('Otu:${ids}')
     //2.c Use otu_labels as the hovertext for the chart.
     var label_otu = data.samples[0].otu_labels.slice(0,10);
-    var trace ={
-        x:
-    }
+    //Create the data to develop the trace
+    var graph = {
+        x: values,
+        y: ids,
+        text: labels,
+        marker: {
+        color:"green"},
+        type:"bar",
+        orientation:"h",
+    // create the data placement
+    var data = [trace];
+    };
 
-}
 //2.Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
+Plotly.newPlot("bar",data, graph);
 
-Plotly.newPlot("plot", data, layout);
 
 //2b.Create dropdown Menu
 d3.selectAll("#selDataset).on("change",updatePlotly);
