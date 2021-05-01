@@ -49,6 +49,9 @@ function updatePlotly() {
 
 //3.Create a bubble chart that displays each sample.
 Plotly.newPlot("bubble", databubble,layout);
+    var graph_1 = {
+        x:
+    }
 
 //4.Display the sample metadata, i.e., an individual's demographic information.
 var indMet = data.metadata.filter(subject => subject.id ==id)[0];
