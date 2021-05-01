@@ -33,7 +33,19 @@ d3.json("samples.json").then(data => {
         type:"bar",
         orientation:"h",
     };
-    
+
+    var plots = {
+        title: "OTU by Rank top 10",
+        yaxis:{
+            tickmode:"linear",
+        },
+        margin:{
+            l:50,
+            r:50,
+            t:30,
+            b:20
+        }
+    };
 
 //2.Create a horizontal bar chart  
 Plotly.newPlot("bar",input, graph);
@@ -52,7 +64,7 @@ Plotly.newPlot("bar",input, graph);
 //2b.Create dropdown Menu
         //Create the function
         function dropdown() {
-var dropdown d3.selectAll("#selDataset").on("change",updatePlotly);
+var dropdown = d3.selectAll("#selDataset").on("change",updatePlotly);
 //2b.i Create a function when the dropdown is selected
 function updatePlotly() {
     //2b.ii Using D3 to select the dropdown menu
