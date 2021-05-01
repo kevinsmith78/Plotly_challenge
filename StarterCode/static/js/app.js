@@ -23,7 +23,7 @@ d3.json("samples.json").then(data => {
     var label_otu = data.samples[0].otu_labels.slice(0,10);
     //Create the trace
     var input = [trace];
-    //Create the data to develop the trace
+    //create variables for the bubble chart
     var graph = {
         x: values,
         y: ids,
