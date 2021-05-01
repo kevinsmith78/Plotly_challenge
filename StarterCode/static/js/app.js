@@ -13,7 +13,7 @@ function horizontal(id) {
         //2.a Use sample_values as the values for the bar chart.
         var values = data.samples[0].sample_values.slice(0, 10).reverse();
         //console.log(values)
-        //2.b Use otu_ids as the labels for the bar chart.
+        //2.b Use otu_ids as the labels for the bar chart (mapping).
         var ids = ids.otd.map(d => "otu" + d);
         //print out the console log with the values
         //console.log('Otu:${ids}')
