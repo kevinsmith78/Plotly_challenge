@@ -4,9 +4,6 @@ d3.json("samples.json").then(function (data) {
     //check console
     //console.log(data);
     //Collect the values for the upcoming inputs for all of the charts using 0 as start point
-    var ids = data.samples[0].otu_ids;
-    var sample = data.samples[0].sample_values
-    var labels = data.samples[0].otu_labels
     
     //Develop the ID's into an array
     var NewArray = data.samples.map(d => d.id);
@@ -22,7 +19,9 @@ d3.json("samples.json").then(function (data) {
     //console.log('Otu:${ids}')
     //2.c Use otu_labels as the hovertext for the chart.
     var label_otu = data.samples[0].otu_labels.slice(0,10);
-    
+    var trace ={
+        x:
+    }
 
 }
 //2.Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
