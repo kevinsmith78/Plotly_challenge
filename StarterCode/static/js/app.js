@@ -38,7 +38,10 @@ Plotly.newPlot("bar",input, graph);
     function init() {
         var choice = d3.select("#selDataset")
         //look through the data in the original fine
-
+        d3.json("samples.json").then(data => {
+        //console.log(data)
+        //get the id names to populate
+        data.names.forEach(funciton(name))
     }
 
 //2b.Create dropdown Menu
@@ -61,7 +64,7 @@ Plotly.newPlot("bubble", databubble,layout);
         marker: {
             size:data.samples[0].values,
             color:data.samples[0].values,
-        }
+        },
 
     }
 
