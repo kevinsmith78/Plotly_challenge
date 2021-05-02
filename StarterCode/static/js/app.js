@@ -1,24 +1,14 @@
+function charting(id) {
+
 // 1.Use the D3 library to read in samples.json.
     //d3.json("samples.json").then(data => {
         //check console
         //console.log(data)
 // Create ID Selector                
-function init() {
-    var selector = d3.select("#selDataset");
-    // Use the list of sample names to populate the select options  
-    d3.json("samples.json").then((data) => {
-        var sampleNames = data.names;
-        sampleNames.forEach((sample) => {
-            selector.append("option").text(sample).property("value", sample);
-        });
-    });
-    charting(data.names[0]);
-    meta(data.names[0]);
-}
-init();    
+
 
 //2. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
-function charting(id) {
+
     //read in the data
     d3.json("samples.json").then((data) => {
     //check console
@@ -41,20 +31,22 @@ function charting(id) {
             color: "green"},
             type: "bar",
             orientation: "h",
-    };   
+        };   
     //develop the trace for the data
         var hdata = [graph];
     //create the design of the chart
         var hdesign ={
         title: "OTU by Rank top 10",
-        yaxis: {tickmode: "linear",},
+        yaxis: {tickmode: "linear",
+        },
         margin: {
             l: 50,
             r: 50,
             t: 30,
             b: 20
-    }
-};
+        }
+    };
+
     //create the horiztonal bar chart
     Plotly.newPlot("bar", input, graph);
     //3. Create a bubble chart that displays each sample.
@@ -92,10 +84,10 @@ function meta(id) {
         var selector = d3.select("#sample-metadata");
             //console.log(metadata)
             //filter the metadata to pull only what id need
-        var indMet = meta.filter(part => part.id == id)[0];
+        var indMet = meta.filter(part => part.id.toString() === id)[0];
             //clear the data upon selection
         selector.html("");
-        Object.entries (indmet).ForEach(([key, value]) => {
+        Object.entries (indMet).forEach(([key, value]) => {
             selector.append("h6").text(`${key}.toUppercase()}: ${value}`);
         });
     });
@@ -106,4 +98,18 @@ function change(id) {
     meta(id);
 }
 
-init();
+
+function init() {
+    var selector = d3.select("#selDataset");
+    // Use the list of sample names to populate the select options  
+    d3.json("samples.json").then((data) => {
+        var sampleNames = data.names;
+        sampleNames.forEach((sample) => {
+            selector.append("option").text(sample).property("value", sample);
+        });
+    
+    charting(data.names[0]);
+    meta(data.names[0]);
+    });
+}
+init();    
