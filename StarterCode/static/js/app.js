@@ -122,16 +122,17 @@ function meta(id) {
         //filter the metadata to pull only what id need
         var indMet = meta.filter(part => part.id == id)[0];
         //run through each key value needed within the dataset
-
         selector.html("");
         Object.entries(indMet).forEach(([key, value]) => {
-            //within the new list create the ul
-
-            selector.append("h6").text(`${key.toUpperCase()}: ${value});
+        //within the new list create the ul
+            selector.append("h6").text(`${key.toUpperCase()}: ${value}`);
         });
     });
-
 } 
+//develop function for the change in the data and plotting
+    function change(id) {
+        
+    }
 
 
 function init() {
